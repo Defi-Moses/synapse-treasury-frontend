@@ -56,7 +56,7 @@ const PieChart = () => {
       });
     }
   }, [data]);
-
+  if (!data) return <p>Loading...</p>
   return (
     <div className="flex justify-center items-center border rounded-lg py-8">
       <svg ref={ref} className="w-full h-full"/>
