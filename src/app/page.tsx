@@ -6,10 +6,12 @@ import TokenList from '../../components/tokenList.js'
 import MonthList from '../../components/pastHoldings.js'
 import PieChart from '../../components/pieChart.js'
 import dynamic from 'next/dynamic';
+import { ApolloProvider } from '@apollo/client';
+import client from '../../utils/apollo-client';
 
 export default function Home() {
   return (
-    
+    <ApolloProvider client={client}>
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <h1 className="text-4xl font-bold font-inter">Synapse Treasury Holdings</h1>
       <div className= "w-2/3 h-full py-4">
@@ -45,5 +47,6 @@ export default function Home() {
 
 
     </main>
+    </ApolloProvider>
   )
 }
