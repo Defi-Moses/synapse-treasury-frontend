@@ -26,9 +26,6 @@ const MonthList = () => {
       setCsvData(monthlyTotals);
     })
     .catch(error => console.error('Error:', error));
-    if(data){
-      console.log(data.dailyStatisticsByChain[1]['date'])
-    }
     if (data && data.dailyStatisticsByChain) {
       const monthlyFees = data.dailyStatisticsByChain.reduce((acc, curr) => {
         const month = new Date(curr['date']).getMonth() + 1

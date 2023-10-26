@@ -16,8 +16,10 @@ const TokenList = () => {
   }
 
   const sortedData = Object.entries(data)
+  // Filtered for SYN due to nuances
+    .filter(([key]) => key !== 'SYN')
     .sort((a, b) => b[1] - a[1])
-    .slice(0, 14);
+    .slice(0, 15);
 
   return (
 <div className="flex mb-8 w-2/3 mx-auto pb-8 mx-2">

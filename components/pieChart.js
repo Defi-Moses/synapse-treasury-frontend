@@ -58,25 +58,6 @@ const PieChart = () => {
           .duration(500)
           .style("opacity", 0);
       });
-      // const legend = svg.selectAll('.legend')
-      //   .data(Object.keys(data)) // Use data keys for legend
-      //   .enter()
-      //   .append('g')
-      //   .attr('class', 'legend')
-      //   .attr('transform', (d, i) => `translate(0,${i * 20})`); // Adjust position here
-      
-      // legend.append('rect')
-      //   .attr('x', 0) // Adjust position here
-      //   .attr('width', 18)
-      //   .attr('height', 18)
-      //   .style('fill', (d, i) => colorScale(i)); // Use index to get color
-      
-      // legend.append('text')
-      //   .attr('x', 24) // Adjust position here
-      //   .attr('y', 9)
-      //   .attr('dy', '.35em')
-      //   .style('text-anchor', 'start') // Change anchor to 'start'
-      //   .text((d) => d); // Use data key for text
     }
   }, [data]);
 
@@ -84,21 +65,23 @@ const PieChart = () => {
 
   if (!data) return <p>Loading...</p>
   return (
-    <div className="flex flex-col items-start border rounded-lg py-8">
-      {/* <svg className="w-1/4 h-20 p-4">
+    <div className="flex flex-col items-start border rounded-lg py-8 px-4 ml-4">
+
+    <div className="flex flex-row justify-center items-center">
+      <svg className="w-1/4 py-4 ml-8" style={{ height: `${legendData.length * 28}px` }}>
         {legendData.map((key, i) => (
           <g key={key} transform={`translate(0,${i * 20})`}>
             <rect x={0} width={18} height={18} fill={colorScale(i)} />
             <text x={24} y={9} dy=".35em" fill="white">{key}</text>
           </g>
         ))}
-      </svg> */}
-      <div className="flex justify-center items-center">
-        <svg ref={ref} className="w-full h-full"/>
-      </div>
-      <div className="absolute bottom-0 right-0 p-2">
-        {`Total Treasury: ${formatToDollar(Object.values(data).reduce((a, b) => a + b, 0))}`}
-      </div>
+      </svg>
+      <svg ref={ref} className=""/>
+    </div>
+
+    <div className="p-8 font-bold">
+      {`Total Treasury: ${formatToDollar(Object.values(data).reduce((a, b) => a + b, 0))}`}
+    </div>
     </div>
   );
 }
