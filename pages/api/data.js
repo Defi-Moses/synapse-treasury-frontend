@@ -31,9 +31,9 @@ export default function handler(req, res) {
   }
 
   // Format the data to dollar value
-  for (let key in data) {
-    data[key] = `$${Math.round(data[key]).toLocaleString()}`;
-  }
+  // for (let key in data) {
+  //   data[key] = `$${Math.round(data[key]).toLocaleString()}`;
+  // }
 
   res.status(200).json(data);
 }

@@ -19,6 +19,7 @@ export default function Home() {
       <div className="flex justify-between w-2/3 mx-auto">
         <div className="flex-1 border border-white p-4 rounded-lg mr-2">
           <ChainHoldings/>
+          
         </div>
         <div className="flex-1 border border-white rounded-lg p-4 ml-2">
           <TokenList />

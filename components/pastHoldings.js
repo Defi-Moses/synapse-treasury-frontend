@@ -1,5 +1,6 @@
 // treasury-frontend/components/pastHoldings.js
 import { useEffect, useState } from 'react';
+import formatToDollar from '../utils/helpers'
 
 const MonthList = () => {
   const [data, setData] = useState(null);
@@ -14,10 +15,8 @@ const MonthList = () => {
     ))
     .then(data => {
       const monthlyTotals = data.reduce((acc, curr, index) => {
-        // Remove $ and commas, convert to number
-        const currValues = Object.values(curr).map(value => parseFloat(value.replace(/[$,]/g, '')));
         // Sum up the values
-        acc[months[index]] = currValues.reduce((a, b) => a + b, 0);
+        acc[months[index]] = Object.values(curr).reduce((a, b) => a + b, 0);
         return acc;
       }, {});
       setData(monthlyTotals);
@@ -40,7 +39,7 @@ const MonthList = () => {
       <div className="flex-1 flex flex-col items-center">
         <p className="font-bold text-lg">Total Amount</p>
         {Object.entries(data).map(([key, value], index) => (
-          <p key={index} className="text-center">{`$${Math.round(value).toLocaleString()}`}</p>
+          <p key={index} className="text-center">{`${formatToDollar(value)}`}</p>
         ))}
       </div>
     </div>

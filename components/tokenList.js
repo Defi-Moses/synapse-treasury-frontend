@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import formatToDollar from '../utils/helpers';
 
 const TokenList = () => {
   const [data, setData] = useState(null);
@@ -6,14 +7,7 @@ const TokenList = () => {
   useEffect(() => {
     fetch('/api/data?file=currentTreasuryHoldings.csv&type=breakdown')
       .then(response => response.json())
-      .then(data => {
-        const formattedData = Object.entries(data).reduce((acc, [key, value]) => {
-          // Remove $ and commas, convert to number
-          acc[key] = parseFloat(value.replace(/[$,]/g, ''));
-          return acc;
-        }, {});
-        setData(formattedData);
-      })
+      .then(data => setData(data))
       .catch(error => console.error('Error:', error));
   }, []);
 
@@ -36,7 +30,7 @@ const TokenList = () => {
   <div className="flex-1 flex flex-col ml-2">
     <h2 className="font-bold text-lg mb-2">Total Holdings</h2>
     {sortedData.map(([key, value], index) => (
-      <p key={index}>{`$${Math.round(value).toLocaleString()}`}</p>
+      <p key={index}>{`${formatToDollar(value)}`}</p>
     ))}
   </div>
 </div>

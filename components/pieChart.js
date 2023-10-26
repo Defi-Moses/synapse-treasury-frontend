@@ -1,6 +1,7 @@
 // treasury-frontend/pages/components/PieChart.js
 import * as d3 from 'd3'
 import { useEffect, useRef, useState } from 'react'
+import formatToDollar from '../utils/helpers'
 
 const PieChart = () => {
   const ref = useRef();
@@ -26,7 +27,7 @@ const PieChart = () => {
 
       svg.attr('viewBox', [-width / 2, -height / 2, width, height]);
 
-      const pie = d3.pie().value(d => Number(d[1].replace(/\$/g, '').replace(/,/g, '')))(Object.entries(data));
+      const pie = d3.pie().value(d => d[1])(Object.entries(data));
 
       const arc = d3.arc()
         .innerRadius(0)
@@ -45,7 +46,7 @@ const PieChart = () => {
         tooltip.transition()
           .duration(200)
           .style("opacity", .9);
-        tooltip.html(`${d.data[0]}: ${d.data[1]}`)
+        tooltip.html(`${d.data[0]}: ${formatToDollar(d.data[1])}`)
           .style("left", (event.pageX) + "px")
           .style("top", (event.pageY - 28) + "px");
       })
@@ -61,7 +62,7 @@ const PieChart = () => {
     <div className="flex justify-center items-center border rounded-lg py-8">
       <svg ref={ref} className="w-full h-full"/>
       <div className="absolute bottom-0 right-0 p-2">
-        {`Total Treasury: $${Object.values(data).reduce((a, b) => a + Number(b.replace(/\$/g, '').replace(/,/g, '')), 0).toLocaleString()}`}
+      {`Total Treasury: ${formatToDollar(Object.values(data).reduce((a, b) => a + b, 0))}`}
       </div>
     </div>
   );
