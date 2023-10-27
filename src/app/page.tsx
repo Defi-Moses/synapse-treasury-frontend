@@ -27,8 +27,8 @@ export default function Home() {
           <TokenList />
         </div>
       </div>
-      <h3 className="font-bold font-inter pt-4">Historical Data</h3>
-      <div className= "w-2/3 h-full py-4 border rounded-lg - my-4">
+      <h3 className="font-bold font-inter py-4">Historical Data</h3>
+      <div className= "w-2/3 h-full p-8 border rounded-lg">
       
         <MonthList/>
       </div>
@@ -47,6 +47,12 @@ export default function Home() {
 
 
     </main>
+    <div className="w-1/8 flex justify-center items-center rounded-lg  ">
+      <a href="https://github.com/Defi-Moses/synapse-treasury/blob/main/README.md#methodology" target="_blank" rel="noopener noreferrer" className="text-white">
+        Methodology can be found 
+        <span className="text-blue-500"> here</span>
+      </a>
+    </div>
     </ApolloProvider>
   )
 }
