@@ -11,11 +11,12 @@ import client from '../../utils/apollo-client';
 
 export default function Home() {
   return (
+    <div className='bg-black'>
     <ApolloProvider client={client}>
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-4xl font-bold font-inter">Synapse Treasury Holdings</h1>
+      <h1 className="text-4xl font-bold font-inter text-white">Synapse Treasury Holdings</h1>
       <div className= "w-2/3 h-full py-4">
-        <h3 className="font-bold font-inter">Last Updated 10-22-2023</h3>
+        <h3 className="font-bold font-inter text-white">Last Updated 10-22-2023</h3>
         <PieChart/> 
       </div>
       <div className="flex justify-between w-2/3 mx-auto">
@@ -27,7 +28,7 @@ export default function Home() {
           <TokenList />
         </div>
       </div>
-      <h3 className="font-bold font-inter py-4">Historical Data</h3>
+      <h3 className="font-bold font-inter py-4 text-white">Historical Data</h3>
       <div className= "w-2/3 h-full p-8 border rounded-lg">
       
         <MonthList/>
@@ -47,12 +48,13 @@ export default function Home() {
 
 
     </main>
-    <div className="w-1/8 flex justify-center items-center rounded-lg ">
+    <div className="w-1/8 flex justify-center items-center bg-black ">
       <a href="https://github.com/Defi-Moses/synapse-treasury/blob/main/README.md#methodology" target="_blank" rel="noopener noreferrer" className="text-white">
         Methodology can be found 
         <span className="text-blue-500"> here</span>
       </a>
     </div>
     </ApolloProvider>
+    </div>
   )
 }

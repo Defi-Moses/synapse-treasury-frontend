@@ -23,7 +23,7 @@ const TokenList = () => {
     .slice(0, 15);
 
   return (
-<div className="flex mb-8 w-2/3 mx-auto pb-8 mx-2">
+<div className="flex mb-8 w-2/3 mx-auto pb-8 mx-2 text-white">
   <div className="flex-1 flex flex-col">
     <h2 className="font-bold text-lg mb-2">Token Symbol</h2>
     {sortedData.map(([key, value], index) => (

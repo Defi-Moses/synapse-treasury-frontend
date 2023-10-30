@@ -15,7 +15,7 @@ const Row = ({ month, fee, holding, tokenData }) => {
   
     return (
       <>
-        <div onClick={handleClick} className="flex justify-between border rounded-lg py-4">
+        <div onClick={handleClick} className="flex justify-between rounded-lg text-white">
           <div className="flex-1 text-center">{month}</div>
           <div className="flex-1 text-center">{fee}</div>
           <div className="flex-1 text-center">{holding}</div>

@@ -17,7 +17,7 @@ const ChainHoldings = () => {
   }
 
   return (
-    <div className="flex flex-col mb-8 w-2/3 mx-auto pb-8 font-inter">
+    <div className="flex flex-col mb-8 w-2/3 mx-auto pb-8 font-inter text-white">
       <div className="flex py-2 px-4 mb-1 bg-gray-100">
         <div className="flex-1 font-bold text-xl font-extrabold">Chain</div>
         <div className="flex-1 font-bold text-xl font-extrabold">Total Holdings</div>

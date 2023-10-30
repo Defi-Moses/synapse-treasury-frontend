@@ -62,7 +62,7 @@ const MonthList = () => {
   }
 
   return (
-    <div className="flex flex-col justify-center">
+    <div className="flex flex-col justify-center text-white">
       <div className="flex justify-center">
         <div className="flex-1 text-center font-bold">Date</div>
         <div className="flex-1 text-center font-bold">Monthly Fees</div>
@@ -75,7 +75,7 @@ const MonthList = () => {
       const currentTokenData = tokenData && tokenData[index] ? tokenData[index] : '0';
   
         return (
-          <div key={index} className="py-4">
+          <div key={index} className="py-4 hover:bg-gray-200 transition-colors duration-200">
             <Row month={month} fee={fee} holding={holding} tokenData={currentTokenData} />
           </div>
         );

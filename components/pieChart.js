@@ -79,7 +79,7 @@ const PieChart = () => {
       <svg ref={ref} className=""/>
     </div>
 
-    <div className="p-8 font-bold">
+    <div className="p-8 font-bold text-white">
       {`Total Treasury: ${formatToDollar(Object.values(data).reduce((a, b) => a + b, 0))}`}
     </div>
     </div>
