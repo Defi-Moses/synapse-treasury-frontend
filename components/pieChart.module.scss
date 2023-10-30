@@ -25,3 +25,16 @@
   color: white;
   text-align: center;
 }
+
+.chartCard {
+  min-height: 550px;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  // Your styles for "sm" and up
+  .chartCard {
+    min-height: 300px;
+  }
+}
