@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import formatToDollar from '../utils/helpers';
+import {tokenMapping} from '../utils/tokenMapping'
 
 const TokenList = () => {
   const [data, setData] = useState(null);
@@ -26,7 +27,10 @@ const TokenList = () => {
   <div className="flex-1 flex flex-col">
     <h2 className="font-bold text-lg mb-2">Token Symbol</h2>
     {sortedData.map(([key, value], index) => (
-      <p key={index}>{`${key.substring(0, 7)}`}</p>
+      <div key={index} className="flex items-center">
+        <img src={tokenMapping[key]} alt="" style={{ width: '22px', height: '22px' }} className="mr-2 ml-2" />
+        <p>{`${key.substring(0, 7)}`}</p>
+      </div>
     ))}
   </div>
   <div className="flex-1 flex flex-col ml-2">

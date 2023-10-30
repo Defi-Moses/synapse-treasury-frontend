@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import formatToDollar from '../utils/helpers'
+import {chainMapping} from '../utils/tokenMapping'
 
 const ChainHoldings = () => {
   const [data, setData] = useState(null);
@@ -28,7 +29,10 @@ const ChainHoldings = () => {
             key={index} 
             className={`flex py-2 px-4 mb-1 ${index % 2 === 0 ? 'bg-gray-200' : 'bg-gray-600'}`}
           >
-            <div className="flex-1">{key}</div>
+            <div className="flex-1 flex items-center">
+              <img src={chainMapping[key]} alt="" style={{ width: '22px', height: '22px' }} className=" mr-2 ml-2" />
+              {key}
+            </div>
             <div className="flex-1">{formatToDollar(value)}</div>
           </div>
       ))}

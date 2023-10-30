@@ -47,7 +47,7 @@ export default function Home() {
 
 
     </main>
-    <div className="w-1/8 flex justify-center items-center rounded-lg  ">
+    <div className="w-1/8 flex justify-center items-center rounded-lg ">
       <a href="https://github.com/Defi-Moses/synapse-treasury/blob/main/README.md#methodology" target="_blank" rel="noopener noreferrer" className="text-white">
         Methodology can be found 
         <span className="text-blue-500"> here</span>
