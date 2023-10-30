@@ -14,8 +14,9 @@
 .legendItem {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   min-width: 120px;
+  gap: 0.5rem;
 }
 
 .totalTreasury {
