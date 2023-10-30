@@ -1,0 +1,48 @@
+.container {
+  // relative flex flex-col items-start border rounded-lg py-4
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  border: 1px solid white;
+  border-radius: 0.5rem;
+  padding-top: 16px;
+}
+
+.legend {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 500px;
+}
+
+.chart {
+  width: 300px;
+  height: 300px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  min-width: 120px;
+}
+
+.badge {
+  width: fit-content;
+  background: white;
+  color: black;
+  font-size: 0.75rem;
+  font-weight: 400;
+  border-width: 1px;
+  border-radius: 0.5rem;
+  padding: 0 4px;
+}
+
+.totalTreasury {
+  margin-top: 8px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+}
