@@ -1,0 +1,30 @@
+.headings {
+  display: flex;
+  margin-bottom: 1rem;
+
+  .title {
+    display: flex;
+    flex: 1 0;
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+}
+
+.list {
+  display: flex;
+  flex-flow: column;
+  gap: 0.5rem;
+
+  .left {
+    display: flex;
+    flex: 1 0;
+    gap: 0.5rem;
+  }
+
+  .right {
+    display: flex;
+    flex: 1 0;
+    align-items: center;
+    justify-content: center;
+  }
+}

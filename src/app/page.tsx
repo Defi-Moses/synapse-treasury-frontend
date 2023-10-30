@@ -22,11 +22,9 @@ export default function Home() {
           <div className='w-full md:w-2/3 h-full py-8'>
             <PieChart />
           </div>
-          <div className='flex flex-col sm:flex-row justify-between w-full sm:w-3/3 '>
+          <div className='flex flex-col sm:flex-row justify-between w-full sm:w-3/3 gap-[2rem]'>
             <ChainHoldings />
-            <div className='flex-1 border border-white rounded-lg p-4 ml-2'>
-              <TokenList />
-            </div>
+            <TokenList />
           </div>
           <h3 className='font-bold font-inter py-4 text-white'>Historical Data</h3>
           <div className='w-2/3 h-full p-8 border rounded-lg'>
