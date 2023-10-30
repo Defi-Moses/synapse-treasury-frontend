@@ -8,6 +8,7 @@ import PieChart from '../../components/pieChart.js'
 import dynamic from 'next/dynamic'
 import { ApolloProvider } from '@apollo/client'
 import client from '../../utils/apollo-client'
+import styles from './page.module.scss'
 
 export default function Home() {
   return (
@@ -15,11 +16,14 @@ export default function Home() {
       <ApolloProvider client={client}>
         <main className='flex min-h-screen flex-col items-center justify-between p-6 md:p-24'>
           <h1 className='text-xl md:text-4xl font-bold font-inter text-white'>Synapse Treasury Holdings</h1>
+          <div className='flex items-center justify-center py-4 w-full'>
+            <span className={styles.badge}>Last Updated 10-22-2023</span>
+          </div>
           <div className='w-full md:w-2/3 h-full py-8'>
             <PieChart />
           </div>
-          <div className='flex justify-between w-2/3 mx-auto'>
-            <div className='flex-1 border border-white p-4 rounded-lg mr-2'>
+          <div className='flex flex-col sm:flex-row justify-between w-full sm:w-3/3 '>
+            <div className='flex-1 border border-white p-4 rounded-lg'>
               <ChainHoldings />
             </div>
             <div className='flex-1 border border-white rounded-lg p-4 ml-2'>

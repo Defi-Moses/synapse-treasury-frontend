@@ -5,7 +5,7 @@
   align-items: center;
   border: 1px solid white;
   border-radius: 0.5rem;
-  padding-top: 16px;
+  padding: 16px;
 }
 
 .legend {
@@ -26,17 +26,6 @@
   align-items: center;
   justify-content: start;
   min-width: 120px;
-}
-
-.badge {
-  width: fit-content;
-  background: white;
-  color: black;
-  font-size: 0.75rem;
-  font-weight: 400;
-  border-width: 1px;
-  border-radius: 0.5rem;
-  padding: 0 4px;
 }
 
 .totalTreasury {

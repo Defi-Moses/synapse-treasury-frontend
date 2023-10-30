@@ -58,7 +58,7 @@ const PieChart = () => {
   if (!data) return <p>Loading...</p>
   return (
     <div className={styles.container}>
-      <div className="flex justify-center font-bold text-white w-full">
+      <div className='flex justify-center font-bold text-white w-full'>
         {`Total Treasury: ${formatToDollar(Object.values(data).reduce((a, b) => a + b, 0))}`}
       </div>
       <div className={`flex flex-col md:flex-row justify-center items-center px-4`}>
@@ -73,14 +73,10 @@ const PieChart = () => {
                   backgroundColor: colorScale(i),
                 }}
               ></div>
-              <span className="ml-2 mr-2 text-white">{key}</span>
+              <span className='ml-2 mr-2 text-white'>{key}</span>
             </div>
           ))}
         </div>
-      </div>
-
-      <div className="flex items-center justify-center py-4 w-full">
-        <span className={styles.badge}>Last Updated 10-22-2023</span>
       </div>
     </div>
   )
