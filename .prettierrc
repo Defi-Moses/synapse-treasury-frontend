@@ -5,6 +5,7 @@
   "printWidth": 120,
   "quoteProps": "as-needed",
   "singleQuote": true,
+  "jsxSingleQuote": true,
   "tabWidth": 2,
   "trailingComma": "es5",
   "useTabs": false,
