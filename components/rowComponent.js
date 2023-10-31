@@ -20,11 +20,11 @@ const Row = ({ month, fee, holding, tokenData }) => {
         <FaChevronDown className='pr-4' />
       </div>
       {isExpanded && (
-        <div className='flex flex-col sm:flex-row rounded-lg' style={{ backgroundColor: '	#282828' }}>
+        <>
           {[tokenData].map((tokenPart, index) => (
-            <ListCard title1='Token' title2='Holdings' data={tokenPart} mapping={tokenMapping}></ListCard>
+            <ListCard variant='filled' title1='Token' title2='Holdings' data={tokenPart} mapping={tokenMapping} />
           ))}
-        </div>
+        </>
       )}
     </>
   )
