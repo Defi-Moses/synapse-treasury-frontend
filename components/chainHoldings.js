@@ -9,13 +9,14 @@ const ChainHoldings = () => {
   useEffect(() => {
     fetch('/api/data?file=sums.csv&type=summary')
       .then((response) => response.json())
-      .then((data) => setData(data))
+      .then((data) => {
+        const sortedData = Object.entries(data)
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 15)
+        setData(sortedData)
+      })
       .catch((error) => console.error('Error:', error))
   }, [])
-
-  if (!data) {
-    return <div>Loading...</div>
-  }
 
   return <ListCard title1='Chain' title2='Holdings' data={data} mapping={chainMapping} />
 }

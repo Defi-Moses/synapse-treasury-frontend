@@ -20,10 +20,12 @@ export default function Home() {
             <Badge>Last Updated 10-22-2023</Badge>
           </div>
 
-          <div className='flex flex-col sm:flex-row items-center gap-[1.5rem]'>
+          <div className='flex flex-col flex-wrap sm:flex-row items-center gap-[1.5rem] justify-center'>
             <PieChart />
-            <ChainHoldings />
-            <TokenList />
+            <div className='flex flex-wrap justify-center gap-[1.5rem] min-h-[576px]'>
+              <ChainHoldings />
+              <TokenList />
+            </div>
           </div>
           <h3 className='font-bold font-inter py-4 text-white'>Historical Data</h3>
           <div className='w-2/3 h-full p-8 border rounded-lg'>

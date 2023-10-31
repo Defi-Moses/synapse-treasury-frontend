@@ -9,17 +9,15 @@ const TokenList = () => {
   useEffect(() => {
     fetch('/api/data?file=currentTreasuryHoldings.csv&type=breakdown')
       .then((response) => response.json())
-      .then((data) => setData(data))
+      .then((data) => {
+        const sortedData = Object.entries(data)
+          .filter(([key]) => key !== 'SYN')
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 15)
+        setData(sortedData)
+      })
       .catch((error) => console.error('Error:', error))
   }, [])
-
-  if (!data) {
-    return <div>Loading...</div>
-  }
-
-  const sortedData = Object.entries(data)
-    // Filtered for SYN due to nuances
-    .filter(([key]) => key !== 'SYN')
 
   return <ListCard title1='Token' title2='Holdings' data={data} mapping={tokenMapping} />
 }

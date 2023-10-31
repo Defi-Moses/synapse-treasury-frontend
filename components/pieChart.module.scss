@@ -27,14 +27,8 @@
 }
 
 .chartCard {
-  height: 550px;
+  height: 576px;
+  width: 320px;
   align-items: center;
   justify-content: center;
-}
-
-@media (min-width: 640px) {
-  // Your styles for "sm" and up
-  .chartCard {
-    width: 320px;
-  }
 }
