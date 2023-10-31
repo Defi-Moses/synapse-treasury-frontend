@@ -1,48 +1,33 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import formatToDollar from '../utils/helpers'
 import { FaChevronDown } from 'react-icons/fa'
-import {tokenMapping} from '../utils/tokenMapping'
+import { tokenMapping } from '../utils/tokenMapping'
+import ListCard from './library/ListCard'
 
 const Row = ({ month, fee, holding, tokenData }) => {
-    const [isExpanded, setIsExpanded] = useState(false);
-    const firstThird = tokenData.slice(0, Math.ceil(tokenData.length / 3));
-    const secondThird = tokenData.slice(Math.ceil(tokenData.length / 3), Math.ceil((tokenData.length / 3) * 2));
-    const lastThird = tokenData.slice(Math.ceil((tokenData.length / 3) * 2));
-  
-    const handleClick = () => {
-      setIsExpanded(!isExpanded);
-    };
-  
-    return (
-      <>
-        <div onClick={handleClick} className="flex justify-between rounded-lg text-white">
-          <div className="flex-1 text-center">{month}</div>
-          <div className="flex-1 text-center">{fee}</div>
-          <div className="flex-1 text-center">{holding}</div>
-          <FaChevronDown className='pr-4'/>
-        </div>
-        {isExpanded && (
-          <div className="flex justify-between rounded-lg" style={{ backgroundColor: '	#282828' }}>
-            {/* <div className="flex justify-between" style={{ backgroundColor: 'gray' }}> */}
-          {[firstThird, secondThird, lastThird].map((tokenPart, index) => (
-            // <div key={index} className="flex-1 py-4">
-            //   {tokenPart.map((token, i) => (
-            //     <div key={i} className="text-center">{`${token[0]}: ${formatToDollar(token[1])}`}</div>
-            //   ))}
-            // </div>
-            <div key={index} className="flex-1 py-4">
-              {tokenPart.map((token, i) => (
-                <div key={i} className="flex">
-                  <img src={tokenMapping[token[0]]} alt={''} style={{ width: '22px', height: '22px' }} className="mr-2 ml-2" />
-                  <div className="text-center">{`${token[0]}: ${formatToDollar(token[1])}`}</div>
-                </div>
-              ))}
-            </div>
+  const [isExpanded, setIsExpanded] = useState(false)
+
+  const handleClick = () => {
+    setIsExpanded(!isExpanded)
+  }
+
+  return (
+    <>
+      <div onClick={handleClick} className='flex gap-[0.5rem] rounded-lg text-white'>
+        <div className='flex-1 text-center'>{month}</div>
+        <div className='flex-1 text-center'>{fee}</div>
+        <div className='flex-1 text-center'>{holding}</div>
+        <FaChevronDown className='pr-4' />
+      </div>
+      {isExpanded && (
+        <div className='flex flex-col sm:flex-row rounded-lg' style={{ backgroundColor: '	#282828' }}>
+          {[tokenData].map((tokenPart, index) => (
+            <ListCard title1='Token' title2='Holdings' data={tokenPart} mapping={tokenMapping}></ListCard>
           ))}
         </div>
-            )}
-      </>
-    );
-};
+      )}
+    </>
+  )
+}
 
 export default Row

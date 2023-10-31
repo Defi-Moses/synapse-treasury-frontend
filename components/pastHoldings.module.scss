@@ -1,0 +1,16 @@
+.headings {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+
+  .title {
+    width: 70px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .last {
+    width: 120px;
+  }
+}
