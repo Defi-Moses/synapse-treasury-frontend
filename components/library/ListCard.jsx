@@ -3,10 +3,10 @@ import styles from './ListCard.module.scss'
 import formatToDollar from '@/utils/helpers'
 import Loader from './Loader'
 
-export default function ListCard({ title1, title2, data, mapping }) {
+export default function ListCard({ title1, title2, data, mapping, variant }) {
   if (!data?.length) {
     return (
-      <Card className={styles.placeholder}>
+      <Card variant={variant} className={styles.placeholder}>
         <div className='flex h-full w-full items-center justify-center'>
           <Loader />
         </div>
@@ -15,7 +15,7 @@ export default function ListCard({ title1, title2, data, mapping }) {
   }
 
   return (
-    <Card>
+    <Card variant={variant}>
       <div className='flex flex-col w-2/3 mx-auto  font-inter text-white w-full'>
         <div className={styles.headings}>
           <div className={styles.title}>{title1}</div>
