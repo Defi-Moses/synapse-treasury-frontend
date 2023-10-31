@@ -1,28 +1,27 @@
 'use client'
 import Image from 'next/image'
 import React from 'react'
-import ChainHoldings from '../../components/chainHoldings.js'
-import TokenList from '../../components/tokenList.js'
-import MonthList from '../../components/pastHoldings.js'
-import PieChart from '../../components/pieChart.js'
+import ChainHoldings from '@/components/chainHoldings.js'
+import TokenList from '@/components/tokenList.js'
+import MonthList from '@/components/pastHoldings.js'
+import PieChart from '@/components/pieChart.js'
 import dynamic from 'next/dynamic'
 import { ApolloProvider } from '@apollo/client'
-import client from '../../utils/apollo-client'
-import styles from './page.module.scss'
+import client from '@/utils/apollo-client'
+import Badge from '@/components/library/Badge.jsx'
 
 export default function Home() {
   return (
     <div className='bg-black'>
       <ApolloProvider client={client}>
-        <main className='flex min-h-screen flex-col items-center justify-between p-6 md:p-24'>
+        <main className='flex min-h-screen flex-col items-center p-6 md:p-12'>
           <h1 className='text-xl md:text-4xl font-bold font-inter text-white'>Synapse Treasury Holdings</h1>
-          <div className='flex items-center justify-center py-4 w-full'>
-            <span className={styles.badge}>Last Updated 10-22-2023</span>
+          <div className='flex items-center justify-center py-4 w-full mb-6'>
+            <Badge>Last Updated 10-22-2023</Badge>
           </div>
-          <div className='w-full md:w-2/3 h-full py-8'>
+
+          <div className='flex flex-col sm:flex-row items-center gap-[1.5rem]'>
             <PieChart />
-          </div>
-          <div className='flex flex-col sm:flex-row justify-between w-full sm:w-3/3 gap-[2rem]'>
             <ChainHoldings />
             <TokenList />
           </div>
