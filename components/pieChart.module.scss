@@ -1,0 +1,36 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  border: 1px solid white;
+  border-radius: 0.5rem;
+  padding: 16px;
+}
+
+.legend {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 500px;
+}
+
+.chart {
+  width: 300px;
+  height: 300px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  min-width: 120px;
+}
+
+.totalTreasury {
+  margin-top: 8px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+}
