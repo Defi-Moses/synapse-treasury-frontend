@@ -15,7 +15,7 @@ export default function ListCard({ title1, title2, data, mapping, variant }) {
   }
 
   return (
-    <Card variant={variant}>
+    <Card variant={variant} className={styles.placeholder}>
       <div className='flex flex-col w-2/3 mx-auto  font-inter text-white w-full'>
         <div className={styles.headings}>
           <div className={styles.title}>{title1}</div>
