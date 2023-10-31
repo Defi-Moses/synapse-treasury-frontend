@@ -12,7 +12,7 @@ export default function ListCard({ title1, title2, data, mapping }) {
       <div className='flex flex-col mb-8 w-2/3 mx-auto pb-8 font-inter text-white w-full'>
         <div className={styles.headings}>
           <div className={styles.title}>{title1}</div>
-          <div className={styles.title}>{title2}</div>
+          <div className={`${styles.title} ${styles.right}`}>{title2}</div>
         </div>
         <div className={styles.list}>
           {sortedData.map(([key, value], index) => (
