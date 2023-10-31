@@ -21,7 +21,7 @@ const TokenList = () => {
     // Filtered for SYN due to nuances
     .filter(([key]) => key !== 'SYN')
 
-  return <ListCard title1='Token' title2='Total Holdings' data={data} mapping={tokenMapping} />
+  return <ListCard title1='Token' title2='Holdings' data={data} mapping={tokenMapping} />
 }
 
 export default TokenList

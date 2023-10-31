@@ -17,7 +17,7 @@ const ChainHoldings = () => {
     return <div>Loading...</div>
   }
 
-  return <ListCard title1='Chain' title2='Total Holdings' data={data} mapping={chainMapping} />
+  return <ListCard title1='Chain' title2='Holdings' data={data} mapping={chainMapping} />
 }
 
 export default ChainHoldings
