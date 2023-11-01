@@ -43,10 +43,15 @@ const MonthList = () => {
         const sortedMonthlyData = monthlyData.map((data) => {
           const sortedData = Object.entries(data)
             .filter(([key]) => key !== 'SYN')
+            .map(([key, value]) => {
+              const normalizedKey = key.split(' ')[0]
+              return [normalizedKey, value]
+            })
             .sort((a, b) => b[1] - a[1])
             .slice(0, 15)
           return sortedData
         })
+
         setTokenData(sortedMonthlyData)
       })
       .catch((error) => console.error('Error:', error))
