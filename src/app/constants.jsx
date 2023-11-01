@@ -4,7 +4,7 @@ export const logo = (
       opacity='0.7'
       d='M20.1456 5L5 18.5H35L20.1456 32'
       stroke='url(#paint0_radial_559_2988)'
-      stroke-width='3'
+      strokeWidth='3'
     ></path>
     <path
       d='M20 10C22.7614 10 25 7.76142 25 5C25 2.23858 22.7614 0 20 0C17.2386 0 15 2.23858 15 5C15 7.76142 17.2386 10 20 10Z'
