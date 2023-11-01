@@ -1,4 +1,5 @@
 import styles from './Badge.module.scss'
+
 import PropTypes from 'prop-types'
 
 export default function Badge({ children, filled, sticky, rectangle, color, bottom }) {
