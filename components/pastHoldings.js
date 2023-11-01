@@ -70,7 +70,7 @@ const MonthList = () => {
 
   if (!csvData || !data || !tokenData) {
     return (
-      <Card className={styles.placeholder}>
+      <Card className={styles.card}>
         <div className='flex h-full w-full items-center justify-center'>
           <Loader />
         </div>

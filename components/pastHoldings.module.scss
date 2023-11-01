@@ -32,5 +32,8 @@
 }
 
 .card {
-  width: fit-content;
+  min-width: 345px;
+  min-height: 295px;
+  align-items: center;
+  justify-content: center;
 }
