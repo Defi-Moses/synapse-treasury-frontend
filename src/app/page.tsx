@@ -11,14 +11,13 @@ import client from '@/utils/apollo-client'
 import Badge from '@/components/library/Badge.jsx'
 import { logo } from './constants'
 import styles from './page.module.scss'
-import GroupedBarChart from '@/components/groupedBarChart'
 
 export default function Home() {
   return (
     <div className='bg-black'>
       <ApolloProvider client={client}>
         <main className='flex min-h-screen flex-col items-center p-6 md:p-12'>
-          <div>
+          <div className='flex w-full'>
             <div className='relative flex flex-col items-center justify-center w-fit'>
               {logo}
               <span className={`text-xl md:text-xl font-bold font-inter text-white ${styles.treasury}`}>
