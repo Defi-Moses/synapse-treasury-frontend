@@ -7,7 +7,7 @@ import Badge from './Badge'
 export default function ListCard({ label, data, mapping, variant }) {
   if (!data?.length) {
     return (
-      <Card variant={variant} className={styles.placeholder}>
+      <Card className={styles.placeholder}>
         <div className='flex h-full w-full items-center justify-center'>
           <Loader />
         </div>
@@ -16,7 +16,7 @@ export default function ListCard({ label, data, mapping, variant }) {
   }
 
   return (
-    <Card variant={variant} className={styles.placeholder}>
+    <Card className={styles.placeholder}>
       <div className='flex flex-col w-2/3 mx-auto  font-inter text-white w-full'>
         <div className='flex justify-center w-full'>
           <Badge sticky>{label}</Badge>
