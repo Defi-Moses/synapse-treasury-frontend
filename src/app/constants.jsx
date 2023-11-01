@@ -101,3 +101,27 @@ export const logo = (
     </defs>
   </svg>
 )
+export const chartColorPalette = [
+  '#82cfff',
+  '#33b1ff',
+  '#1192e8',
+  '#0072c3',
+  '#00539a',
+  '#003a6d',
+  '#491d8b',
+  '#6929c4',
+  '#8a3ffc',
+  '#a56eff',
+  '#be95ff',
+  '#d4bbff',
+  '#e8daff',
+  '#f6f2ff',
+  '#d9fbfb',
+  '#9ef0f0',
+  '#3ddbd9',
+  '#08bdba',
+  '#009d9a',
+  '#007d79',
+  '#005d5d',
+  '#004144',
+]

@@ -17,8 +17,8 @@ const MonthList = () => {
   const { loading, error, data } = useQuery(GET_HISTORICAL_FEES)
 
   const categories = [
-    { category: 'Fees', color: '#1f77b4' },
-    { category: 'Total Holdings', color: '#ff7f0e' },
+    { category: 'Fees', color: '#82cfff' },
+    { category: 'Total Holdings', color: '#8a3ffc' },
   ]
 
   const isDesktop = () => window.innerWidth > 768 // Change 768 to your desired breakpoint
@@ -117,7 +117,16 @@ const MonthList = () => {
       .attr('transform', `translate(${margin.left}, ${margin.top})`)
 
     // Tooltip
-    const tooltip = d3.select('body').append('div').attr('class', 'tooltip').style('opacity', 0)
+    const tooltip = d3
+      .select('body')
+      .append('div')
+      .attr('class', 'tooltip')
+      .style('opacity', 0)
+      .style('background', '#333')
+      .style('padding', '8px')
+      .style('border-radius', '4px')
+      .style('color', '#fff')
+      .style('height', 'fit-content')
 
     const y0 = d3
       .scaleBand()
@@ -157,11 +166,12 @@ const MonthList = () => {
       .attr('x', (d) => x(d.y1))
       .attr('height', y0.bandwidth())
       .attr('width', (d) => x(d.y0) - x(d.y1))
-      .attr('fill', (d) => (d.key === 'Fees' ? '#1f77b4' : '#ff7f0e'))
+      .attr('fill', (d) => (d.key === 'Fees' ? categories[0].color : categories[1].color))
+      .style('cursor', 'pointer')
       .on('mouseover', function (event, d) {
         tooltip.transition().duration(200).style('opacity', 0.9)
         tooltip
-          .html(`${d.key}: ${formatToDollar(d.value)}`)
+          .html(`${formatToDollar(d.value)}`)
           .style('left', `${event.pageX}px`)
           .style('top', `${event.pageY - 28}px`)
       })

@@ -25,7 +25,7 @@ export default function ListCard({ label, data, mapping, variant }) {
         <div className={styles.list}>
           <div className={styles.inner}>
             {data.map(([key, value], index) => (
-              <div key={index} className='flex py-2 px-4 mb-1'>
+              <div key={index} className={styles.row}>
                 <div className={styles.left}>
                   <img src={mapping[key]} alt='' style={{ width: '22px', height: '22px' }} className='mr-2 ' />
                   {key}

@@ -23,7 +23,9 @@ export default function Home() {
               <span className={`text-xl md:text-xl font-bold font-inter text-white ${styles.treasury}`}>
                 Treasury Holdings
               </span>
+              <span className={`text-xl md:text-xl font-bold font-inter text-white ${styles.updated}`}>10-22-2023</span>
             </div>
+            <div className='flex h-fit'></div>
           </div>
 
           <div className='flex flex-col flex-wrap items-center sm:items-start sm:flex-row gap-[1.5rem] justify-center mt-24 '>
@@ -42,15 +44,11 @@ export default function Home() {
               rel='noopener noreferrer'
               className='text-white'
             >
-              <div className='flex flex-col gap-5 justify-center items-center mt-4'>
+              <div className='flex flex-col gap-5 justify-center items-center mt-4 '>
                 <sub>
                   * Methodology can be found
                   <span className='text-blue-500'> here</span>
                 </sub>
-
-                <div className='mt-4'>
-                  <Badge filled>Last Updated: 10-22-2023 </Badge>
-                </div>
               </div>
             </a>
           </div>

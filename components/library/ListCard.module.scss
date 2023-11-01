@@ -29,9 +29,9 @@
 
   .right {
     display: flex;
-    justify-content: center;
+    justify-content: end;
     flex: 1 0;
-    min-width: 120px;
+    min-width: 110px;
   }
 }
 
@@ -42,7 +42,13 @@
   margin-top: 16px;
 }
 
+.row {
+  display: flex;
+  gap: 0.5rem;
+  //flex py-2 px-4 mb-1 gap-[1rem]
+}
+
 .placeholder {
-  width: 274px;
+  width: 260px;
   height: 520px;
 }

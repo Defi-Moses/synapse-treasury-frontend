@@ -6,31 +6,7 @@ import styles from './pieChart.module.scss'
 import Card from '@/components/library/Card'
 import Loader from '@/components/library/Loader'
 import Badge from './library/Badge'
-
-const colorPalette = [
-  '#82cfff',
-  '#33b1ff',
-  '#1192e8',
-  '#0072c3',
-  '#00539a',
-  '#003a6d',
-  '#491d8b',
-  '#6929c4',
-  '#8a3ffc',
-  '#a56eff',
-  '#be95ff',
-  '#d4bbff',
-  '#e8daff',
-  '#f6f2ff',
-  '#d9fbfb',
-  '#9ef0f0',
-  '#3ddbd9',
-  '#08bdba',
-  '#009d9a',
-  '#007d79',
-  '#005d5d',
-  '#004144',
-]
+import { chartColorPalette } from '@/src/app/constants'
 
 const PieChart = () => {
   const ref = useRef()
@@ -44,13 +20,12 @@ const PieChart = () => {
           acc[key] = {
             name: key,
             value: value,
-            color: colorPalette[index],
+            color: chartColorPalette[index],
           }
           return acc
         }, {})
 
         const array = Object.values(coloredData)
-        console.log(array)
         setData(array)
       })
       .catch((error) => console.error('Error:', error))
@@ -72,6 +47,7 @@ const PieChart = () => {
         .style('padding', '8px')
         .style('border-radius', '4px')
         .style('color', '#fff')
+        .style('height', 'fit-content')
 
       svg.attr('viewBox', [-width / 2, -height / 2, width, height])
 
@@ -79,10 +55,17 @@ const PieChart = () => {
 
       const arc = d3
         .arc()
-        .innerRadius(0)
+        // Pie Chart
+        // .innerRadius(0)
+        // .outerRadius(radius - 10)
+
+        // Donut
+        .innerRadius(radius * 0.5)
         .outerRadius(radius - 10)
-      // .cornerRadius(5)
-      // .padAngle(0.03)
+
+        // Cut-out effect
+        .cornerRadius(5)
+        .padAngle(0.02)
 
       svg
         .selectAll('path')
@@ -90,6 +73,7 @@ const PieChart = () => {
         .join('path')
         .attr('d', arc)
         .attr('fill', (d) => d.data.color)
+        .style('cursor', 'pointer')
         .on('mouseover', (event, d) => {
           tooltip.transition().duration(200).style('opacity', 0.9)
           tooltip
