@@ -3,7 +3,7 @@ import Image from 'next/image'
 import React from 'react'
 import ChainHoldings from '@/components/chainHoldings.js'
 import TokenList from '@/components/tokenList.js'
-import MonthList from '@/components/pastHoldings.js'
+import PastHoldings from '@/components/pastHoldings.js'
 import PieChart from '@/components/pieChart.js'
 import dynamic from 'next/dynamic'
 import { ApolloProvider } from '@apollo/client'
@@ -11,6 +11,7 @@ import client from '@/utils/apollo-client'
 import Badge from '@/components/library/Badge.jsx'
 import { logo } from './constants'
 import styles from './page.module.scss'
+import GroupedBarChart from '@/components/groupedBarChart'
 
 export default function Home() {
   return (
@@ -33,7 +34,8 @@ export default function Home() {
               <TokenList />
             </div>
           </div>
-          <MonthList />
+          <PastHoldings />
+
           <div className='w-1/8 flex justify-center gap-[0.5rem] items-center bg-black mt-4'>
             <a
               href='https://github.com/Defi-Moses/synapse-treasury/blob/main/README.md#methodology'
