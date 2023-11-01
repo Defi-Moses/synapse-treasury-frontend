@@ -6,6 +6,7 @@ import { GET_HISTORICAL_FEES } from '../graphql/queries/index'
 import Row from '../components/rowComponent'
 import Card from './library/Card'
 import styles from './pastHoldings.module.scss'
+import Badge from './library/Badge'
 
 const MonthList = () => {
   const [csvData, setCsvData] = useState(null)
@@ -84,6 +85,9 @@ const MonthList = () => {
           </div>
         )
       })}
+      <Badge sticky bottom>
+        Historical Data
+      </Badge>
     </Card>
   )
 }

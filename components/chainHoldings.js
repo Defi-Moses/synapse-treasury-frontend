@@ -18,7 +18,7 @@ const ChainHoldings = () => {
       .catch((error) => console.error('Error:', error))
   }, [])
 
-  return <ListCard title1='Chain' title2='Holdings' data={data} mapping={chainMapping} />
+  return <ListCard label='Chain Holdings' data={data} mapping={chainMapping} />
 }
 
 export default ChainHoldings

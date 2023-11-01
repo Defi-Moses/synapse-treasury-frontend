@@ -9,25 +9,30 @@ import dynamic from 'next/dynamic'
 import { ApolloProvider } from '@apollo/client'
 import client from '@/utils/apollo-client'
 import Badge from '@/components/library/Badge.jsx'
+import { logo } from './constants'
+import styles from './page.module.scss'
 
 export default function Home() {
   return (
     <div className='bg-black'>
       <ApolloProvider client={client}>
         <main className='flex min-h-screen flex-col items-center p-6 md:p-12'>
-          <h1 className='text-xl md:text-4xl font-bold font-inter text-white'>Synapse Treasury Holdings</h1>
-          <div className='flex items-center justify-center py-4 w-full mb-6'>
-            <Badge>Last Updated 10-22-2023</Badge>
+          <div>
+            <div className='relative flex flex-col items-center justify-center w-fit'>
+              {logo}
+              <span className={`text-xl md:text-xl font-bold font-inter text-white ${styles.treasury}`}>
+                Treasury Holdings
+              </span>
+            </div>
           </div>
 
-          <div className='flex flex-col flex-wrap sm:flex-row items-center gap-[1.5rem] justify-center'>
+          <div className='flex flex-col flex-wrap items-center sm:items-start sm:flex-row gap-[1.5rem] justify-center mt-24 '>
             <PieChart />
             <div className='flex flex-wrap justify-center gap-[1.5rem] min-h-[576px]'>
               <ChainHoldings />
               <TokenList />
             </div>
           </div>
-          <h3 className='font-bold font-inter py-4 text-white'>Historical Data</h3>
           <MonthList />
           <div className='w-1/8 flex justify-center gap-[0.5rem] items-center bg-black mt-4'>
             <a
@@ -36,10 +41,16 @@ export default function Home() {
               rel='noopener noreferrer'
               className='text-white'
             >
-              <sub>
-                * Methodology can be found
-                <span className='text-blue-500'> here</span>
-              </sub>
+              <div className='flex flex-col gap-5 justify-center items-center mt-4'>
+                <sub>
+                  * Methodology can be found
+                  <span className='text-blue-500'> here</span>
+                </sub>
+
+                <div className='mt-4'>
+                  <Badge filled>Last Updated: 10-22-2023 </Badge>
+                </div>
+              </div>
             </a>
           </div>
         </main>

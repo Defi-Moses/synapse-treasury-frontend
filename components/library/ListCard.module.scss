@@ -3,6 +3,7 @@
   margin-bottom: 1rem;
 
   .title {
+    color: #ca6bff;
     display: flex;
     flex: 1 0;
     font-weight: bold;
@@ -34,7 +35,14 @@
   }
 }
 
+.inner {
+  display: flex;
+  flex-flow: column;
+  gap: 0.25rem;
+  margin-top: 16px;
+}
+
 .placeholder {
   width: 274px;
-  height: 576px;
+  height: 520px;
 }

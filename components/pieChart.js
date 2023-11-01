@@ -5,6 +5,7 @@ import formatToDollar from '@/utils/helpers'
 import styles from './pieChart.module.scss'
 import Card from '@/components/library/Card'
 import Loader from '@/components/library/Loader'
+import Badge from './library/Badge'
 
 const PieChart = () => {
   const ref = useRef()
@@ -68,7 +69,10 @@ const PieChart = () => {
   return (
     <Card className={styles.chartCard}>
       <div className='flex justify-center font-bold text-white w-full '>
-        {`Total Treasury: ${formatToDollar(Object.values(data).reduce((a, b) => a + b, 0))}`}
+        <Badge sticky>
+          Total Treasury:
+          <span className='font-bold'> {formatToDollar(Object.values(data).reduce((a, b) => a + b, 0))}</span>
+        </Badge>
       </div>
       <div className={`flex flex-col md:flex-row justify-center items-center px-4`}>
         <svg ref={ref} className={styles.chart} />
