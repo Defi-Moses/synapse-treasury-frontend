@@ -5,16 +5,46 @@ import ChainHoldings from '@/components/chainHoldings.js'
 import TokenList from '@/components/tokenList.js'
 import PastHoldings from '@/components/pastHoldings.js'
 import PieChart from '@/components/pieChart.js'
-import dynamic from 'next/dynamic'
 import { ApolloProvider } from '@apollo/client'
 import client from '@/utils/apollo-client'
-import Badge from '@/components/library/Badge.jsx'
 import { logo } from './constants'
 import styles from './page.module.scss'
+import { useWindowSize } from '@uidotdev/usehooks'
+import { IoArrowRedoCircleSharp } from 'react-icons/io5'
 
 export default function Home() {
+  const size = useWindowSize()
+  const isNotDesktop = size.width && size.width <= 1024
+  const isDesktop = size.width && size.width >= 1024
+
   return (
     <div className='bg-black'>
+      {isDesktop && (
+        <div className={`fixed flex  bottom-3 right-3 bg-black text-bold ${styles.methodology}`}>
+          <div className='max-w-[110px]'>
+            Open to read{' '}
+            <u>
+              <a
+                href='https://github.com/Defi-Moses/synapse-treasury/blob/main/README.md#methodology'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='text-[#ca6bff]'
+              >
+                methodology
+              </a>
+            </u>
+          </div>
+          <a
+            href='https://github.com/Defi-Moses/synapse-treasury/blob/main/README.md#methodology'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='text-blue-500'
+          >
+            <IoArrowRedoCircleSharp className='bg-[#ca6bff] rounded-full text-white w-[48px] h-[48px] z-[99] cursor-pointer' />
+          </a>
+        </div>
+      )}
+
       <ApolloProvider client={client}>
         <main className={styles.main}>
           <div className={styles.logo}>
@@ -36,24 +66,34 @@ export default function Home() {
             </div>
           </div>
           <PastHoldings />
-
-          <div className='w-full flex justify-end'>
-            <a
-              href='https://github.com/Defi-Moses/synapse-treasury/blob/main/README.md#methodology'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='text-white'
-            >
-              <div className='flex flex-col gap-5 justify-center items-center mt-4 '>
-                <sub>
-                  * Methodology can be found
-                  <span className='text-blue-500'> here</span>
-                </sub>
-              </div>
-            </a>
-          </div>
         </main>
       </ApolloProvider>
+
+      {isNotDesktop && (
+        <div className={`flex justify-center mt-[2rem] bg-black text-bold ${styles.methodology}`}>
+          <div className='max-w-[110px]'>
+            Open to read{' '}
+            <u>
+              <a
+                href='https://github.com/Defi-Moses/synapse-treasury/blob/main/README.md#methodology'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='text-[#ca6bff]'
+              >
+                methodology
+              </a>
+            </u>
+          </div>
+          <a
+            href='https://github.com/Defi-Moses/synapse-treasury/blob/main/README.md#methodology'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='text-blue-500'
+          >
+            <IoArrowRedoCircleSharp className='bg-[#ca6bff] rounded-full text-white w-[48px] h-[48px] z-[99] cursor-pointer' />
+          </a>
+        </div>
+      )}
     </div>
   )
 }
