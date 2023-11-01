@@ -209,23 +209,7 @@ const MonthList = () => {
           )
         })}
       </div>
-      <sup className='mt-4'>Select a month to see detailed breakthrough</sup>
-
-      {/* Tooltip styles */}
-      <style>{`
-        .tooltip {
-          position: absolute;
-          text-align: center;
-          width: 80px;
-          height: 40px;
-          padding: 2px;
-          font: 12px sans-serif;
-          background: lightsteelblue;
-          border: 0px;
-          border-radius: 8px;
-          pointer-events: none;
-        }
-      `}</style>
+      {/* <sup className='mt-4'>Select a month to see detailed breakthrough</sup> */}
     </Card>
   )
 }
