@@ -18,6 +18,7 @@ const ChainHoldings = () => {
       .catch((error) => console.error('Error:', error))
   }, [])
 
+
   return <ListCard label='Chain Holdings' data={data} mapping={chainMapping} />
 }
 
