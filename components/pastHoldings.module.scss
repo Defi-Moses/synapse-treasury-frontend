@@ -16,3 +16,21 @@
     width: 120px;
   }
 }
+.headings {
+  display: flex;
+  justify-content: left;
+  color: white;
+  gap: 14px;
+  width: 100%;
+
+  .heading {
+    // 'flex-1 text-center font-bold'
+    font-weight: bold;
+    min-width: 80px;
+    text-align: left;
+  }
+}
+
+.card {
+  width: fit-content;
+}

@@ -1,13 +1,12 @@
 // treasury-frontend/components/pastHoldings.js
 import { use, useEffect, useState } from 'react'
-import * as d3 from 'd3'
 import formatToDollar from '../utils/helpers'
 import { gql, useQuery, useLazyQuery } from '@apollo/client'
 import { GET_HISTORICAL_FEES } from '../graphql/queries/index'
 import Row from '../components/rowComponent'
 import Card from './library/Card'
 import styles from './pastHoldings.module.scss'
-import Badge from './library/Badge'
+import Badge from '@/components/library/Badge'
 
 const MonthList = () => {
   const [csvData, setCsvData] = useState(null)
@@ -15,13 +14,6 @@ const MonthList = () => {
   const [tokenData, setTokenData] = useState(null)
   const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']
   const { loading, error, data } = useQuery(GET_HISTORICAL_FEES)
-
-  const categories = [
-    { category: 'Fees', color: '#82cfff' },
-    { category: 'Total Holdings', color: '#8a3ffc' },
-  ]
-
-  const isDesktop = () => window.innerWidth > 768 // Change 768 to your desired breakpoint
 
   useEffect(() => {
     const months = Array.from({ length: 9 }, (_, i) => i + 1) // Months from 1 to 12
@@ -52,10 +44,15 @@ const MonthList = () => {
         const sortedMonthlyData = monthlyData.map((data) => {
           const sortedData = Object.entries(data)
             .filter(([key]) => key !== 'SYN')
+            .map(([key, value]) => {
+              const normalizedKey = key.split(' ')[0]
+              return [normalizedKey, value]
+            })
             .sort((a, b) => b[1] - a[1])
             .slice(0, 15)
           return sortedData
         })
+
         setTokenData(sortedMonthlyData)
       })
       .catch((error) => console.error('Error:', error))
@@ -70,146 +67,26 @@ const MonthList = () => {
     }
   }, [data, loading, error])
 
-  useEffect(() => {
-    if (!csvData) return
-    const rawData = Object.entries(csvData).map(([key, value], index) => {
-      const month = monthNames[key - 1] ? `${monthNames[key - 1]} 2023` : '0'
-      const fee = monthlyFees[key] ? formatToDollar(monthlyFees[key]) : '0'
-      const holding = value ? formatToDollar(value) : '0'
-      const currentTokenData = tokenData && tokenData[index] ? tokenData[index] : '0'
-
-      return { month, Fees: fee, TotalHoldings: holding }
-    })
-
-    const convertToNumber = (currency) => {
-      return Number(currency.replace(/[^0-9.-]+/g, ''))
-    }
-
-    const data = rawData.map((d) => ({
-      month: d.month,
-      Fees: convertToNumber(d.Fees),
-      TotalHoldings: convertToNumber(d.TotalHoldings),
-    }))
-
-    const stack = (d) => {
-      const total = d.Fees + d.TotalHoldings
-      return [
-        { key: 'TotalHoldings', value: d.TotalHoldings, y1: 0, y0: d.TotalHoldings },
-        { key: 'Fees', value: d.Fees, y1: d.TotalHoldings, y0: total },
-      ]
-    }
-
-    // Transform data for stacked representation
-    const stackedData = data.map((d) => ({
-      month: d.month,
-      stack: stack(d),
-    }))
-
-    const margin = { top: 20, right: 20, bottom: 20, left: 70 },
-      width = 320 - margin.left - margin.right,
-      height = 420 - margin.top - margin.bottom
-
-    const svg = d3
-      .select('#chart')
-      .attr('width', width + margin.left + margin.right)
-      .attr('height', height + margin.top + margin.bottom + 50)
-      .append('g')
-      .attr('transform', `translate(${margin.left}, ${margin.top})`)
-
-    // Tooltip
-    const tooltip = d3
-      .select('body')
-      .append('div')
-      .attr('class', 'tooltip')
-      .style('opacity', 0)
-      .style('background', '#333')
-      .style('padding', '8px')
-      .style('border-radius', '4px')
-      .style('color', '#fff')
-      .style('height', 'fit-content')
-
-    const y0 = d3
-      .scaleBand()
-      .domain(data.map((d) => d.month))
-      .rangeRound([height, 0])
-      .paddingInner(0.5) // Increase this value to add more space between bars
-
-    const y1 = d3.scaleBand().domain(['Fees', 'TotalHoldings']).rangeRound([0, y0.bandwidth()]).padding(0.4) // Increase this value to make each bar thinner
-
-    const x = d3
-      .scaleLinear()
-      .domain([0, d3.max(data, (d) => Math.max(d.Fees, d.TotalHoldings))])
-      .rangeRound([0, width])
-
-    const yAxis = d3.axisLeft(y0)
-    const xAxis = d3.axisBottom(x).tickFormat((d) => `$${d / 1e6}m`)
-
-    svg.append('g').call(yAxis)
-
-    svg.append('g').attr('transform', `translate(0, ${height})`).call(xAxis)
-
-    // Create the bars
-    const month = svg
-      .selectAll('.month')
-      .data(stackedData)
-      .enter()
-      .append('g')
-      .attr('class', 'month')
-      .attr('transform', (d) => `translate(0, ${y0(d.month)})`)
-
-    month
-      .selectAll('rect')
-      .data((d) => d.stack)
-      .enter()
-      .append('rect')
-      .attr('y', 0)
-      .attr('x', (d) => x(d.y1))
-      .attr('height', y0.bandwidth())
-      .attr('width', (d) => x(d.y0) - x(d.y1))
-      .attr('fill', (d) => (d.key === 'Fees' ? categories[0].color : categories[1].color))
-      .style('cursor', 'pointer')
-      .on('mouseover', function (event, d) {
-        tooltip.transition().duration(200).style('opacity', 0.9)
-        tooltip
-          .html(`${formatToDollar(d.value)}`)
-          .style('left', `${event.pageX}px`)
-          .style('top', `${event.pageY - 28}px`)
-      })
-      .on('mouseout', function () {
-        tooltip.transition().duration(500).style('opacity', 0)
-      })
-      .on('click', function (event, d, i) {
-        console.log(`Clicked on ${d.key} bar for the month of ${d.month} at index ${i}`)
-      })
-  }, [csvData])
-
   if (!csvData || !data || !tokenData) {
     return <div>Loading...</div>
   }
 
   return (
-    <Card>
-      <Badge sticky>Historical Data - Fees & Holdings</Badge>
-
-      <svg id='chart'></svg>
-      <div className='flex gap-[0.5rem] items-center justify-center'>
-        {categories.map(({ category, color }) => {
-          return (
-            <>
-              <div
-                style={{
-                  width: '18px',
-                  height: '18px',
-                  backgroundColor: color,
-                }}
-              />
-
-              <div>{category}</div>
-            </>
-          )
-        })}
+    <Card className={styles.card}>
+      <Badge sticky>Historical Data</Badge>
+      <div className={styles.headings}>
+        <div className={styles.heading}>Date</div>
+        <div className={styles.heading}>Fees</div>
+        <div className={styles.heading}>Total Holdings</div>
       </div>
-      {/* <sup className='mt-4'>Select a month to see detailed breakthrough</sup> */}
+      {Object.entries(csvData).map(([key, value], index) => {
+        const month = monthNames[key - 1] ? `${monthNames[key - 1]} 2023` : '0'
+        const fee = monthlyFees[key] ? formatToDollar(monthlyFees[key]) : '0'
+        const holding = value ? formatToDollar(value) : '0'
+        const currentTokenData = tokenData && tokenData[index] ? tokenData[index] : '0'
+
+        return <Row key={index} month={month} fee={fee} holding={holding} tokenData={currentTokenData} />
+      })}
     </Card>
   )
 }

@@ -16,8 +16,8 @@ export default function Home() {
   return (
     <div className='bg-black'>
       <ApolloProvider client={client}>
-        <main className='flex min-h-screen flex-col items-center p-6 md:p-12'>
-          <div className='flex w-full'>
+        <main className={styles.main}>
+          <div className={styles.logo}>
             <div className='relative flex flex-col items-center justify-center w-fit'>
               {logo}
               <span className={`text-xl md:text-xl font-bold font-inter text-white ${styles.treasury}`}>
@@ -28,16 +28,16 @@ export default function Home() {
             <div className='flex h-fit'></div>
           </div>
 
-          <div className='flex flex-col flex-wrap items-center sm:items-start sm:flex-row gap-[1.5rem] justify-center mt-24 '>
+          <div className='flex flex-col flex-wrap items-center sm:items-start sm:flex-row gap-[1.5rem] justify-center mt-24 sm:mt-[70px] '>
             <PieChart />
-            <div className='flex flex-wrap justify-center gap-[1.5rem] min-h-[576px]'>
+            <div className='flex flex-wrap justify-center gap-[1.5rem] mb-8'>
               <ChainHoldings />
               <TokenList />
             </div>
           </div>
           <PastHoldings />
 
-          <div className='w-1/8 flex justify-center gap-[0.5rem] items-center bg-black mt-4'>
+          <div className='fixed bottom-[14px] right-[10px] w-1/8 flex justify-center gap-[0.5rem] items-center bg-black mt-4'>
             <a
               href='https://github.com/Defi-Moses/synapse-treasury/blob/main/README.md#methodology'
               target='_blank'

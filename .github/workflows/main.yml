@@ -1,0 +1,39 @@
+name: Security Scans
+
+on: [push, pull_request] # Adjust this to your desired triggering events
+
+jobs:
+  security-checks:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Snyk
+      uses: snyk/actions@0.4.0
+      with:
+        command: test
+
+    - name: Dependabot CISA Known Exploitable Vulnerabilities
+      uses: advanced-security/dependabot-kev-action@v0
+
+    - name: Fetch Metadata from Dependabot PRs
+      uses: dependabot/fetch-metadata@v1.6.0
+      with:
+        alert-lookup: true
+        compat-lookup: true
+        github-token: ${{ github.token }}
+        skip-commit-verification: false
+        skip-verification: false
+
+    # - name: GP Security Scan
+    #   uses: whitesource/GitHubPackagesSecurityAction@19.10.2
+    #   with:
+    #     gp-token: 
+    #     ws-destination-url: 
+    #     ws-api-key: 
+    #     ws-user-key: 
+    #     ws-product-key: # optional
+    #     print-scan-report: # optional
+    #     actions_step_debug: # optional
