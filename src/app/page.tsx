@@ -37,7 +37,7 @@ export default function Home() {
           </div>
           <PastHoldings />
 
-          <div className='fixed bottom-[14px] right-[10px] w-1/8 flex justify-center gap-[0.5rem] items-center bg-black mt-4'>
+          <div className='w-full flex justify-end'>
             <a
               href='https://github.com/Defi-Moses/synapse-treasury/blob/main/README.md#methodology'
               target='_blank'
