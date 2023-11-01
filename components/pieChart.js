@@ -3,6 +3,8 @@ import * as d3 from 'd3'
 import { useEffect, useRef, useState } from 'react'
 import formatToDollar from '@/utils/helpers'
 import styles from './pieChart.module.scss'
+import Card from '@/components/library/Card'
+import Loader from '@/components/library/Loader'
 
 const PieChart = () => {
   const ref = useRef()
@@ -55,10 +57,17 @@ const PieChart = () => {
     }
   }, [data])
 
-  if (!data) return <p>Loading...</p>
+  if (!data)
+    return (
+      <Card className={styles.chartCard}>
+        <div className='flex h-full w-full items-center justify-center'>
+          <Loader />
+        </div>
+      </Card>
+    )
   return (
-    <div className={styles.container}>
-      <div className='flex justify-center font-bold text-white w-full'>
+    <Card className={styles.chartCard}>
+      <div className='flex justify-center font-bold text-white w-full '>
         {`Total Treasury: ${formatToDollar(Object.values(data).reduce((a, b) => a + b, 0))}`}
       </div>
       <div className={`flex flex-col md:flex-row justify-center items-center px-4`}>
@@ -78,7 +87,7 @@ const PieChart = () => {
           ))}
         </div>
       </div>
-    </div>
+    </Card>
   )
 }
 

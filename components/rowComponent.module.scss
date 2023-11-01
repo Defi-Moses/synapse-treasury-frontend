@@ -1,0 +1,32 @@
+.row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: white;
+}
+
+.item {
+  min-width: 90px;
+  text-align: left;
+}
+
+.smaller {
+  min-width: 80px;
+}
+
+.card {
+  color: white;
+  background-color: #282828;
+  margin: 14px 0;
+}
+
+.leftContainer {
+  display: flex;
+  width: 100%;
+  gap: 14px;
+}
+
+.left {
+  display: flex;
+  min-width: 100px;
+}
