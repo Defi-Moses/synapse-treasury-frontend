@@ -7,6 +7,7 @@ import Row from '../components/rowComponent'
 import Card from './library/Card'
 import styles from './pastHoldings.module.scss'
 import Badge from '@/components/library/Badge'
+import Loader from './library/Loader'
 
 const MonthList = () => {
   const [csvData, setCsvData] = useState(null)
@@ -68,7 +69,13 @@ const MonthList = () => {
   }, [data, loading, error])
 
   if (!csvData || !data || !tokenData) {
-    return <div>Loading...</div>
+    return (
+      <Card className={styles.placeholder}>
+        <div className='flex h-full w-full items-center justify-center'>
+          <Loader />
+        </div>
+      </Card>
+    )
   }
 
   return (
