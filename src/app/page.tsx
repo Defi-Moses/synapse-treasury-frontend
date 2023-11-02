@@ -72,7 +72,7 @@ export default function Home() {
       {isNotDesktop && (
         <div className={`flex justify-center mt-[2rem] bg-black text-bold ${styles.methodology}`}>
           <div className='max-w-[110px]'>
-            Open to read{' '}
+            <span className='text-white'>Open to read</span>{' '}
             <u>
               <a
                 href='https://github.com/Defi-Moses/synapse-treasury/blob/main/README.md#methodology'
