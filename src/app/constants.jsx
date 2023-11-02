@@ -51,8 +51,8 @@ export const logo = (
         gradientUnits='userSpaceOnUse'
         gradientTransform='translate(-30.884 31.4351) scale(74.8969 94.9958)'
       >
-        <stop stop-color='#FF00FF'></stop>
-        <stop offset='1' stop-color='#AC8FFF'></stop>
+        <stop stopColor='#FF00FF'></stop>
+        <stop offset='1' stopColor='#AC8FFF'></stop>
       </radialGradient>
       <radialGradient
         id='paint1_radial_559_2988'
@@ -62,8 +62,8 @@ export const logo = (
         gradientUnits='userSpaceOnUse'
         gradientTransform='translate(3.03867 9.79079) scale(24.9656 35.1836)'
       >
-        <stop stop-color='#FF00FF'></stop>
-        <stop offset='1' stop-color='#AC8FFF'></stop>
+        <stop stopColor='#FF00FF'></stop>
+        <stop offset='1' stopColor='#AC8FFF'></stop>
       </radialGradient>
       <radialGradient
         id='paint2_radial_559_2988'
@@ -73,8 +73,8 @@ export const logo = (
         gradientUnits='userSpaceOnUse'
         gradientTransform='translate(-11.9613 22.7908) scale(24.9656 35.1836)'
       >
-        <stop stop-color='#FF00FF'></stop>
-        <stop offset='1' stop-color='#AC8FFF'></stop>
+        <stop stopColor='#FF00FF'></stop>
+        <stop offset='1' stopColor='#AC8FFF'></stop>
       </radialGradient>
       <radialGradient
         id='paint3_radial_559_2988'
@@ -84,8 +84,8 @@ export const logo = (
         gradientUnits='userSpaceOnUse'
         gradientTransform='translate(3.03867 35.7908) scale(24.9656 35.1836)'
       >
-        <stop stop-color='#FF00FF'></stop>
-        <stop offset='1' stop-color='#AC8FFF'></stop>
+        <stop stopColor='#FF00FF'></stop>
+        <stop offset='1' stopColor='#AC8FFF'></stop>
       </radialGradient>
       <radialGradient
         id='paint4_radial_559_2988'
@@ -95,8 +95,8 @@ export const logo = (
         gradientUnits='userSpaceOnUse'
         gradientTransform='translate(17.0387 22.7908) scale(24.9656 35.1836)'
       >
-        <stop stop-color='#FF00FF'></stop>
-        <stop offset='1' stop-color='#AC8FFF'></stop>
+        <stop stopColor='#FF00FF'></stop>
+        <stop offset='1' stopColor='#AC8FFF'></stop>
       </radialGradient>
     </defs>
   </svg>
