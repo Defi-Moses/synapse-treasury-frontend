@@ -1,14 +1,15 @@
 .legend {
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 500px;
+  gap: 4px;
+  max-height: 160px; //16px is one, and a gap of 4 - 160px allows max 8 items per col
 }
 
 .chart {
-  width: 300px;
-  height: 300px;
+  width: 280px;
+  height: 280px;
 }
 
 .legendItem {
@@ -17,6 +18,12 @@
   justify-content: flex-start;
   min-width: 120px;
   gap: 0.5rem;
+
+  .legendText {
+    color: white;
+    line-height: 1;
+    font-size: 1rem;
+  }
 }
 
 .totalTreasury {
@@ -27,7 +34,7 @@
 }
 
 .chartCard {
-  height: 576px;
+  height: 480px;
   width: 320px;
   align-items: center;
   justify-content: center;

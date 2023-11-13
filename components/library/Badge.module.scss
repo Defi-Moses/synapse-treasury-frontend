@@ -1,10 +1,38 @@
 .container {
   width: fit-content;
-  background: white;
-  color: black;
+  outline: 1px solid #ca6bff;
+  outline-offset: -1px;
+  background-color: black;
   font-size: 0.75rem;
   font-weight: 400;
-  border-width: 1px;
   border-radius: 0.5rem;
-  padding: 0 4px;
+  padding: 2px 4px;
+  position: relative;
+}
+
+.filled {
+  background: #ca6bff;
+  color: white;
+}
+
+.sticky {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: -16px;
+  width: 100%;
+  color: white;
+  .container {
+    font-size: medium;
+    padding: 4px 8px;
+  }
+}
+
+.bottom {
+  top: unset !important;
+  bottom: -16px !important;
+}
+
+.rectangle {
+  border-radius: unset;
 }

@@ -23,7 +23,7 @@ const TokenList = () => {
       .catch((error) => console.error('Error:', error))
   }, [])
 
-  return <ListCard title1='Token' title2='Holdings' data={data} mapping={tokenMapping} />
+  return <ListCard label='Token Holdings' data={data} mapping={tokenMapping} />
 }
 
 export default TokenList

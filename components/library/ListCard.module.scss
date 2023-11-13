@@ -3,6 +3,7 @@
   margin-bottom: 1rem;
 
   .title {
+    color: #ca6bff;
     display: flex;
     flex: 1 0;
     font-weight: bold;
@@ -28,13 +29,27 @@
 
   .right {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     flex: 1 0;
-    min-width: 120px;
+    min-width: 110px;
   }
 }
 
+.inner {
+  display: flex;
+  flex-flow: column;
+  gap: 0.25rem;
+  margin-top: 16px;
+}
+
+.row {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .placeholder {
-  width: 274px;
-  height: 552px;
+  width: 280px;
+  height: 480px;
+  align-items: center;
+  justify-content: center;
 }

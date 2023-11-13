@@ -3,7 +3,11 @@
   display: flex;
   flex-flow: column;
   align-items: center;
-  border: 1px solid white;
+  border: 1px solid #ca6bff;
   border-radius: 0.5rem;
   padding: 16px;
+}
+
+.filled {
+  background-color: #282828;
 }

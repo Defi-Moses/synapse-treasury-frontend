@@ -1,3 +1,33 @@
+.main {
+  padding: 0 1rem;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  .logo {
+    display: flex;
+    width: 100%;
+    padding-top: 1rem;
+  }
+}
+
+.treasury {
+  position: absolute;
+  left: 50px;
+  bottom: -23px;
+  min-width: 175px;
+  color: #ca6bff;
+}
+
+.updated {
+  position: absolute;
+  left: 50px;
+  bottom: -55px;
+  min-width: 175px;
+  font-family: fantasy;
+  height: fit-content;
+}
+
 .badge {
   width: fit-content;
   background: white;
@@ -7,4 +37,12 @@
   border-width: 1px;
   border-radius: 0.5rem;
   padding: 0 4px;
+}
+
+.methodology {
+  background: black;
+  z-index: 99;
+  padding: 4px;
+  border-radius: 0.5rem;
+  align-items: center;
 }

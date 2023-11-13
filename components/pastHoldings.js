@@ -6,6 +6,8 @@ import { GET_HISTORICAL_FEES } from '../graphql/queries/index'
 import Row from '../components/rowComponent'
 import Card from './library/Card'
 import styles from './pastHoldings.module.scss'
+import Badge from '@/components/library/Badge'
+import Loader from './library/Loader'
 
 const MonthList = () => {
   const [csvData, setCsvData] = useState(null)
@@ -67,11 +69,18 @@ const MonthList = () => {
   }, [data, loading, error])
 
   if (!csvData || !data || !tokenData) {
-    return <div>Loading...</div>
+    return (
+      <Card className={styles.card}>
+        <div className='flex h-full w-full items-center justify-center'>
+          <Loader />
+        </div>
+      </Card>
+    )
   }
 
   return (
     <Card className={styles.card}>
+      <Badge sticky>Historical Data</Badge>
       <div className={styles.headings}>
         <div className={styles.heading}>Date</div>
         <div className={styles.heading}>Fees</div>
