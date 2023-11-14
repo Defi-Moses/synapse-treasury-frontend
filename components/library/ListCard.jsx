@@ -5,7 +5,6 @@ import Loader from './Loader'
 import Badge from './Badge'
 
 export default function ListCard({ label, data, mapping, variant }) {
-  console.log(data)
   if (!data?.length) {
     return (
       <Card className={styles.placeholder}>
