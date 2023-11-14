@@ -53,12 +53,12 @@ export default function Home() {
               <span className={`text-xl md:text-xl font-bold font-inter text-white ${styles.treasury}`}>
                 Treasury Holdings
               </span>
-              <span className={`text-xl md:text-xl font-bold font-inter text-white ${styles.updated}`}>11-14-2023</span>
+              <span className={styles.updated}>11-14-2023</span>
             </div>
             <div className='flex h-fit'></div>
           </div>
 
-          <div className='flex flex-col flex-wrap items-center sm:items-start sm:flex-row gap-[1.5rem] justify-center mt-24 sm:mt-[70px] '>
+          <div className='flex flex-col flex-wrap items-center sm:items-start sm:flex-row gap-[1.5rem] justify-center mt-[100px] md:mt-[80px] '>
             <PieChart />
             <div className='flex flex-wrap justify-center gap-[1.5rem] mb-8'>
               <ChainHoldings />

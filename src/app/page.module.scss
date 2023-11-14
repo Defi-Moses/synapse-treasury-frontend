@@ -14,7 +14,7 @@
 .treasury {
   position: absolute;
   left: 50px;
-  bottom: -23px;
+  bottom: -20px;
   min-width: 175px;
   color: #ca6bff;
 }
@@ -23,8 +23,11 @@
   position: absolute;
   left: 50px;
   bottom: -55px;
-  min-width: 175px;
+  min-width: 200px;
   font-family: fantasy;
+  font-size: large;
+  color: white;
+  font-weight: bold;
   height: fit-content;
 }
 
