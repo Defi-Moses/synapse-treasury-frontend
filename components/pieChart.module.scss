@@ -5,6 +5,8 @@
   justify-content: center;
   gap: 4px;
   max-height: 160px; //16px is one, and a gap of 4 - 160px allows max 8 items per col
+  width: 100%;
+  align-items: center;
 }
 
 .chart {
