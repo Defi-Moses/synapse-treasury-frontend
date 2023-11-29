@@ -30,6 +30,8 @@ import dogechainLogo from '../assets/chains/dogechain.svg';
 import cronosLogo from '../assets/chains/cronos.svg';
 import bobaLogo from '../assets/chains/boba.svg';
 import auroraLogo from '../assets/chains/aurora.svg';
+import baseLogo from '../assets/chains/base.svg';
+import harmonyLogo from '../assets/chains/harmony.svg';
 
 export const tokenMapping = {
   'GMX': gmxLogo.src,
@@ -75,5 +77,6 @@ export const chainMapping = {
   'Boba': bobaLogo.src,
   'Aurora': auroraLogo.src,
   'Dfk': dfkLogo.src,
-
+  'Base': baseLogo.src,
+  'Harmony': harmonyLogo.src,
 };
