@@ -13,19 +13,31 @@ export default function handler(req, res) {
 
   if (type === 'summary') {
     data = results.data.reduce((acc, item) => {
-      const claimedFees = parseFloat(item['Claimed Fees'].replace(/[$,]/g, ''));
-      const unclaimedFees = parseFloat(item['Unclaimed Fees'].replace(/[$,]/g, ''));
+      const claimedFees = typeof item['Claimed Fees'] === 'string' 
+        ? parseFloat(item['Claimed Fees'].replace(/[$,]/g, ''))
+        : 0;
+    
+      const unclaimedFees = typeof item['Unclaimed Fees'] === 'string' 
+        ? parseFloat(item['Unclaimed Fees'].replace(/[$,]/g, ''))
+        : 0;
+      const swapUnclaimedFees = typeof item['Swap Unclaimed Fees'] === 'string' 
+        ? parseFloat(item['Swap Unclaimed Fees'].replace(/[$,]/g, ''))
+        : 0;
+      const cctpUnclaimedFees = typeof item['CCTP Unclaimed Fees'] === 'string' 
+        ? parseFloat(item['CCTP Unclaimed Fees'].replace(/[$,]/g, ''))
+        : 0;
       const chain = item.Chain.charAt(0).toUpperCase() + item.Chain.slice(1);
-      acc[chain] = claimedFees + unclaimedFees;
+      acc[chain] = claimedFees + unclaimedFees + swapUnclaimedFees + cctpUnclaimedFees;
       return acc;
     }, {});
   } else if (type === 'breakdown') {
     data = results.data.reduce((acc, item) => {
       const value = parseFloat(item['Value'])
-      if (!acc[item['Token Symbol']]) {
-        acc[item['Token Symbol']] = 0;
+      const tokenSymbol = item['Token Symbol'] ? item['Token Symbol'].toUpperCase() : '';
+      if (!acc[tokenSymbol]) {
+        acc[tokenSymbol] = 0;
       }
-      acc[item['Token Symbol']] += value;
+      acc[tokenSymbol] += value;
       return acc;
     }, {});
   }
