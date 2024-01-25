@@ -13,11 +13,11 @@ const MonthList = () => {
   const [csvData, setCsvData] = useState(null)
   const [monthlyFees, setMonthlyFees] = useState({})
   const [tokenData, setTokenData] = useState(null)
-  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']
+  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct', 'Nov', 'Dec']
   const { loading, error, data } = useQuery(GET_HISTORICAL_FEES)
 
   useEffect(() => {
-    const months = Array.from({ length: 9 }, (_, i) => i + 1) // Months from 1 to 12
+    const months = Array.from({ length: 12 }, (_, i) => i + 1) // Months from 1 to 12
 
     // Fetch treasury sums
     Promise.all(
