@@ -23,7 +23,7 @@ const Row = ({ month, fee, holding, tokenData }) => {
       {isExpanded &&
         [tokenData].map((tokenPart, index) => (
           <Card key={index} className={styles.card}>
-            {tokenPart.map((token, i) => (
+            {tokenPart.slice(0, 5).map((token, i) => (
               <div key={i} className={styles.leftContainer}>
                 <div className={styles.left}>
                   <img
