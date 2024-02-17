@@ -46,6 +46,7 @@ export const tokenMapping = {
   'USDC.E': usdcLogo.src,
   'FRAX': fraxLogo.src,
   'WETH': wethLogo.src,
+  'AVWETH': wethLogo.src,
   'ETH': ethLogo.src,
   'AVAX': avaxLogo.src,
   'USDT': usdtLogo.src,
