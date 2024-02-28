@@ -42,6 +42,7 @@ export const tokenMapping = {
   'GOHM': gohmLogo.src,
   'OP': opLogo.src,
   'ARB': arbLogo.src,
+  'ARB-STIP': arbLogo.src,
   'USDCE': usdcLogo.src,
   'USDC.E': usdcLogo.src,
   'FRAX': fraxLogo.src,
