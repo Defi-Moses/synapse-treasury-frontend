@@ -32,6 +32,7 @@ import bobaLogo from '../assets/chains/boba.svg';
 import auroraLogo from '../assets/chains/aurora.svg';
 import baseLogo from '../assets/chains/base.svg';
 import harmonyLogo from '../assets/chains/harmony.svg';
+import blastLogo from '../assets/chains/blast.svg';
 
 export const tokenMapping = {
   'GMX': gmxLogo.src,
@@ -52,10 +53,12 @@ export const tokenMapping = {
   'AVAX': avaxLogo.src,
   'USDT': usdtLogo.src,
   'USDTE': usdtLogo.src,
+  'USDT.E': usdtLogo.src,
   'DAI': daiLogo.src,
   'WMATIC': wmaticLogo.src,
   'SYN-ETH Sushi LP': synLogo.src,
   'SYN-ETH': synLogo.src,
+  'SIP-37': synLogo.src,
   'USDC': usdcLogo.src,
   'BSC-USD': busdLogo.src,
   'BUSD': busdLogo.src,
@@ -85,4 +88,5 @@ export const chainMapping = {
   'Dfk': dfkLogo.src,
   'Base': baseLogo.src,
   'Harmony': harmonyLogo.src,
+  'Blast': blastLogo.src,
 };

@@ -107,6 +107,7 @@ const PieChart = () => {
         <svg ref={ref} className={styles.chart} />
         <div className={styles.legend}>
           {data
+            .filter(item => item.name && item.value) // Add this line to filter out empty items
             .sort((a, b) => a - b)
             .map((item, i) => (
               <div key={i} className={styles.legendItem}>
