@@ -53,7 +53,7 @@ export default function Home() {
               <span className={`text-xl md:text-xl font-bold font-inter text-white ${styles.treasury}`}>
                 Treasury Holdings
               </span>
-              <span className={styles.updated}>Apr-2-2024</span>
+              <span className={styles.updated}>May-1-2024</span>
             </div>
             <div className='flex h-fit'></div>
           </div>

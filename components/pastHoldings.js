@@ -28,7 +28,7 @@ useEffect(() => {
 Promise.all(
   years.flatMap((year) =>
     months.map((month) =>
-      (year < 2024 || (year === 2024 && month < 4)) ?
+      (year < 2024 || (year === 2024 && month < 5)) ?
         fetch(`/api/data?file=treasurySums_${month}_${year}.csv&type=summary`).then((response) => response.json()) :
         Promise.resolve(null) // Resolve to null for dates beyond January 2024
     )
@@ -40,7 +40,7 @@ Promise.all(
         if (!curr) return acc; // Skip if current is null
         const year = years[Math.floor(index / 12)]; // Determine the year based on index
         const month = months[index % 12]; // Determine the month based on index
-        if (year < 2024 || (year === 2024 && month < 4)) {
+        if (year < 2024 || (year === 2024 && month < 5)) {
           acc[`${month}/${year}`] = Object.values(curr).reduce((a, b) => a + b, 0);
         }
         return acc;
@@ -56,7 +56,7 @@ Promise.all(
 Promise.all(
   years.flatMap((year) =>
     months.map((month) =>
-      (year < 2024 || (year === 2024 && month < 4 )) ?
+      (year < 2024 || (year === 2024 && month < 5 )) ?
         fetch(`/api/data?file=treasuryHoldings_${month}_${year}.csv&type=breakdown`).then((response) => response.json()) :
         Promise.resolve([]) // Resolve to an empty array for dates beyond January 2024
     )
