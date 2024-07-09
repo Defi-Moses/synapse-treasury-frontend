@@ -33,6 +33,7 @@ import auroraLogo from '../assets/chains/aurora.svg';
 import baseLogo from '../assets/chains/base.svg';
 import harmonyLogo from '../assets/chains/harmony.svg';
 import blastLogo from '../assets/chains/blast.svg';
+import usdbLogo from '../assets/icons/usdb.png';
 
 export const tokenMapping = {
   'GMX': gmxLogo.src,
@@ -64,6 +65,7 @@ export const tokenMapping = {
   'BUSD': busdLogo.src,
   'METIS': metisLogo.src,
   'HIGH': highLogo.src,
+  'USDB': usdbLogo.src,
 };
 
 
