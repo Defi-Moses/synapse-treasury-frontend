@@ -19,30 +19,28 @@ const MonthList = () => {
 // Update the useEffect hook
 useEffect(() => {
   console.log('useEffect triggered');
-  const months = Array.from({ length: 12 }, (_, i) => i + 1); // Months from 1 to 12
-  const years = [2023, 2024]; // Include both 2023 and 2024
+  const months = Array.from({ length: 12 }, (_, i) => i + 1);
+  const years = [2023, 2024];
   const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth();
 
-// Fetch treasury sums for both years, up to January 2024
-Promise.all(
-  years.flatMap((year) =>
-    months.map((month) =>
-      (year < 2024 || (year === 2024 && month < 7)) ?
-        fetch(`/api/data?file=treasurySums_${month}_${year}.csv&type=summary`).then((response) => response.json()) :
-        Promise.resolve(null) // Resolve to null for dates beyond January 2024
+  Promise.all(
+    years.flatMap((year) =>
+      months.map((month) =>
+        (year < 2024 || (year === 2024 && month <= 9)) ?
+          fetch(`/api/data?file=treasurySums_${month}_${year}.csv&type=summary`)
+            .then((response) => response.json())
+            .catch(() => null) : // Return null for missing data
+          Promise.resolve(null)
+      )
     )
   )
-)
     .then((csvData) => {
       console.log('Fetched CSV data:', csvData);
       const monthlyTotals = csvData.reduce((acc, curr, index) => {
-        if (!curr) return acc; // Skip if current is null
-        const year = years[Math.floor(index / 12)]; // Determine the year based on index
-        const month = months[index % 12]; // Determine the month based on index
-        if (year < 2024 || (year === 2024 && month < 7)) {
-          acc[`${month}/${year}`] = Object.values(curr).reduce((a, b) => a + b, 0);
-        }
+        const year = years[Math.floor(index / 12)];
+        const month = months[index % 12];
+        acc[`${month}/${year}`] = curr ? Object.values(curr).reduce((a, b) => a + b, 0) : null;
         return acc;
       }, {});
       console.log('Monthly totals:', monthlyTotals);
@@ -52,20 +50,21 @@ Promise.all(
       console.error('Error fetching CSV data:', error);
     });
 
-// Fetch token data for both years, up to January 2024
-Promise.all(
-  years.flatMap((year) =>
-    months.map((month) =>
-      (year < 2024 || (year === 2024 && month < 7 )) ?
-        fetch(`/api/data?file=treasuryHoldings_${month}_${year}.csv&type=breakdown`).then((response) => response.json()) :
-        Promise.resolve([]) // Resolve to an empty array for dates beyond January 2024
+  Promise.all(
+    years.flatMap((year) =>
+      months.map((month) =>
+        (year < 2024 || (year === 2024 && month <= 9)) ?
+          fetch(`/api/data?file=treasuryHoldings_${month}_${year}.csv&type=breakdown`)
+            .then((response) => response.json())
+            .catch(() => null) : // Return null for missing data
+          Promise.resolve(null)
+      )
     )
   )
-)
     .then((monthlyData) => {
       console.log('Fetched monthly token data:', monthlyData);
       const sortedMonthlyData = monthlyData.map((data) => {
-        if (!data) return []; // Skip if data is null
+        if (!data) return null; // Return null for missing data
         const sortedData = Object.entries(data)
           .filter(([key]) => key !== 'SYN')
           .map(([key, value]) => {
@@ -119,9 +118,9 @@ return (
     {Object.entries(csvData).map(([key, value], index) => {
       const [month, year] = key.split('/');
       const formattedMonth = monthNames[parseInt(month) - 1] ? `${monthNames[parseInt(month) - 1]} ${year}` : '0';
-      const fee = monthlyFees[key] ? formatToDollar(monthlyFees[key]) : '0';
-      const holding = value ? formatToDollar(value) : '0';
-      const currentTokenData = tokenData && tokenData[index] ? tokenData[index] : '0';
+      const fee = monthlyFees[key] ? formatToDollar(monthlyFees[key]) : '-';
+      const holding = value !== null ? formatToDollar(value) : '-';
+      const currentTokenData = tokenData && tokenData[index] ? tokenData[index] : null;
 
       return <Row key={index} month={formattedMonth} fee={fee} holding={holding} tokenData={currentTokenData} />;
     })}
