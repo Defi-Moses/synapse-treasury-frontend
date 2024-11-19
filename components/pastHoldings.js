@@ -27,7 +27,7 @@ useEffect(() => {
   Promise.all(
     years.flatMap((year) =>
       months.map((month) =>
-        (year < 2024 || (year === 2024 && month <= 9)) ?
+        (year < 2024 || (year === 2024 && month <= 11)) ?
           fetch(`/api/data?file=treasurySums_${month}_${year}.csv&type=summary`)
             .then((response) => response.json())
             .catch(() => null) : // Return null for missing data
@@ -53,7 +53,7 @@ useEffect(() => {
   Promise.all(
     years.flatMap((year) =>
       months.map((month) =>
-        (year < 2024 || (year === 2024 && month <= 9)) ?
+        (year < 2024 || (year === 2024 && month <= 11)) ?
           fetch(`/api/data?file=treasuryHoldings_${month}_${year}.csv&type=breakdown`)
             .then((response) => response.json())
             .catch(() => null) : // Return null for missing data
