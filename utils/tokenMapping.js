@@ -42,7 +42,7 @@ export const tokenMapping = {
   'SYN': synLogo.src,
   'NETH': nethLogo.src,
   'GOHM': gohmLogo.src,
-  'OHM': ohmLogo.src,
+  'OHM': gohmLogo.src,
   'OP': opLogo.src,
   'ARB': arbLogo.src,
   'ARB-STIP': arbLogo.src,
