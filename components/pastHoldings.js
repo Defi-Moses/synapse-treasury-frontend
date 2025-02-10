@@ -20,14 +20,14 @@ const MonthList = () => {
 useEffect(() => {
   console.log('useEffect triggered');
   const months = Array.from({ length: 12 }, (_, i) => i + 1);
-  const years = [2023, 2024];
+  const years = [2023, 2024, 2025];
   const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth();
 
   Promise.all(
     years.flatMap((year) =>
       months.map((month) =>
-        (year < 2024 || (year === 2024 && month <= 12)) ?
+        (year < 2025 || (year === 2025 && month <= 2)) ?
           fetch(`/api/data?file=treasurySums_${month}_${year}.csv&type=summary`)
             .then((response) => response.json())
             .catch(() => null) : // Return null for missing data
@@ -53,7 +53,7 @@ useEffect(() => {
   Promise.all(
     years.flatMap((year) =>
       months.map((month) =>
-        (year < 2024 || (year === 2024 && month <= 12)) ?
+        (year < 2025 || (year === 2025 && month <= 2)) ?
           fetch(`/api/data?file=treasuryHoldings_${month}_${year}.csv&type=breakdown`)
             .then((response) => response.json())
             .catch(() => null) : // Return null for missing data
@@ -115,14 +115,16 @@ return (
       <div className={styles.heading}>Fees</div>
       <div className={styles.heading}>Total Holdings</div>
     </div>
-    {Object.entries(csvData).map(([key, value], index) => {
-      const [month, year] = key.split('/');
-      const formattedMonth = monthNames[parseInt(month) - 1] ? `${monthNames[parseInt(month) - 1]} ${year}` : '0';
-      const fee = monthlyFees[key] ? formatToDollar(monthlyFees[key]) : '-';
-      const holding = value !== null ? formatToDollar(value) : '-';
-      const currentTokenData = tokenData && tokenData[index] ? tokenData[index] : null;
+    {Object.entries(csvData)
+      .filter(([_, value]) => value !== null) // Filter out null values
+      .map(([key, value], index) => {
+        const [month, year] = key.split('/');
+        const formattedMonth = monthNames[parseInt(month) - 1] ? `${monthNames[parseInt(month) - 1]} ${year}` : '0';
+        const fee = monthlyFees[key] ? formatToDollar(monthlyFees[key]) : '-';
+        const holding = formatToDollar(value);
+        const currentTokenData = tokenData && tokenData[index] ? tokenData[index] : null;
 
-      return <Row key={index} month={formattedMonth} fee={fee} holding={holding} tokenData={currentTokenData} />;
+        return <Row key={index} month={formattedMonth} fee={fee} holding={holding} tokenData={currentTokenData} />;
     })}
   </Card>
 );
