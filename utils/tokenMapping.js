@@ -34,7 +34,7 @@ import baseLogo from '../assets/chains/base.svg';
 import harmonyLogo from '../assets/chains/harmony.svg';
 import blastLogo from '../assets/chains/blast.svg';
 import usdbLogo from '../assets/icons/usdb.png';
-
+import wbtcLogo from '../assets/icons/btc.svg';
 export const tokenMapping = {
   'GMX': gmxLogo.src,
   'NUSD': nusdLogo.src,
@@ -67,6 +67,7 @@ export const tokenMapping = {
   'METIS': metisLogo.src,
   'HIGH': highLogo.src,
   'USDB': usdbLogo.src,
+  'WBTC': wbtcLogo.src,
 };
 
 
